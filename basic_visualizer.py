@@ -36,14 +36,20 @@ fig, ax = plt.subplots()
 # make_bar(ax, pd1["Name"], pd1["Writing Speed (Two Minutes)"], "Name of student", "Words written in two minutes", "purple", "Writing speed test")
 
 ax.bar(pd1["Name"], pd1["Speaking"], color='blue')
-plt.xticks(rotation=45)
 plt.xlabel("Student name")
+
+# set_xticks with no value in square brackets will give
+# no names on the x-axis. Update this later so only the
+# one student name is shown.
+
+ax.set_xticks([])
 ax2 = ax.twinx()
 ax2.bar(pd2["Name"], pd2["Speaking"], color='red', alpha=0.3)
 plt.ylim(0, (max(semester_one_begin["Speaking"])))
 plt.ylabel("Speaking score")
 plt.title(label="Speaking Assessment")
 plt.tight_layout()
+
 # save figure as pdf
 plt.savefig('speaking_bar.pdf')
 
