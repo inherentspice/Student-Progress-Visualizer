@@ -15,22 +15,24 @@ print(semester_one_end.head())
 # Dataframe using .drop()
 pd1 = semester_one_begin.drop(semester_one_begin.index[-1])
 
-# initialize figure
+# initialize the figure
 fig, ax = plt.subplots()
 
-# create scatter plot with 'name' on the x-axis, and the results of the
-# speaking test on the y-axis. The colour can be changed by writing in
-# a different colour in quotes.
-ax.scatter(pd1["Name"], pd1["Speaking"], color='lime', s=200, marker = 'o')
+# a function that takes the axes, the data to plot on the x-axis, the
+# data to plot on the y-axis, the x-axis title, the y-axis table, the color
+# of the bars, and the title of the graph
 
-# the names on the axis are rotated so they do not blur together.
-plt.xticks(rotation=45)
+def make_bar(axes, x, y, xlabel, ylabel, color, title):
+    ax.bar(x, y, color=color)
+    plt.xticks(rotation=45)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.ylim(0, (max(y)+2))
+    plt.title(label=title)
 
-# set the x-axis label, y-axis label, and the figure label
-plt.xlabel('Student name')
-plt.ylabel('Questions answered correctly')
-plt.ylim(0, 30)
-plt.title('Speaking assessment')
+# call make_bar function with student name on x-axis, score for writing text
+# on y-axis
+make_bar(ax, pd1["Name"], pd1["Writing Speed (Two Minutes)"], "Name of student", "Words written in two minutes", "purple", "Writing speed test")
 
-# show the graph
+# show graph
 plt.show()
