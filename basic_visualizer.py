@@ -37,13 +37,13 @@ fig, ax = plt.subplots()
 
 ax.bar(pd1["Name"], pd1["Speaking"], color='blue')
 plt.xticks(rotation=45)
+plt.xlabel("Student name")
 ax2 = ax.twinx()
 ax2.bar(pd2["Name"], pd2["Speaking"], color='red', alpha=0.3)
 plt.ylim(0, (max(semester_one_begin["Speaking"])))
-plt.xlabel("Student name")
 plt.ylabel("Speaking score")
 plt.title(label="Speaking Assessment")
-
+plt.tight_layout()
 # save figure as pdf
 plt.savefig('speaking_bar.pdf')
 
