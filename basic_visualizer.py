@@ -44,5 +44,6 @@ plt.xlabel("Student name")
 plt.ylabel("Speaking score")
 plt.title(label="Speaking Assessment")
 
-# show graph
-plt.show()
+# save figure as pdf
+plt.savefig('speaking_bar.pdf')
+
