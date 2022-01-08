@@ -43,9 +43,9 @@ plt.xlabel("Student name")
 # one student name is shown.
 
 ax.set_xticks([])
+plt.ylim(0, (max(semester_one_begin["Speaking"])))
 ax2 = ax.twinx()
 ax2.bar(pd2["Name"], pd2["Speaking"], color='red', alpha=0.3)
-plt.ylim(0, (max(semester_one_begin["Speaking"])))
 plt.ylabel("Speaking score")
 plt.title(label="Speaking Assessment")
 plt.tight_layout()
