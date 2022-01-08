@@ -35,20 +35,24 @@ fig, ax = plt.subplots()
 # # on y-axis
 # make_bar(ax, pd1["Name"], pd1["Writing Speed (Two Minutes)"], "Name of student", "Words written in two minutes", "purple", "Writing speed test")
 
-ax.bar(pd1["Name"], pd1["Speaking"], color='blue')
-plt.xlabel("Student name", fontsize=18)
-plt.ylabel("Speaking score", fontsize=18)
-plt.title(label="Speaking Assessment", fontsize=20)
+def class_bar(ax, x_axis, y_axis_one, y_axis_two, xlabel, ylabel, title, file_name):
+    ax.bar(x_axis, y_axis_one, color='blue')
+    plt.xlabel(xlabel, fontsize=18)
+    plt.ylabel(ylabel, fontsize=18)
+    plt.title(title, fontsize=20)
+
 # set_xticks with no value in square brackets will give
 # no names on the x-axis. Update this later so only the
 # one student name is shown.
 
-ax.set_xticks([])
-plt.ylim(0, (max(semester_one_begin["Speaking"])))
-ax2 = ax.twinx()
-ax2.bar(pd2["Name"], pd2["Speaking"], color='red', alpha=0.3)
-plt.tight_layout()
+    ax.set_xticks([])
+    plt.ylim(0, (max(y_axis_two)))
+    ax2 = ax.twinx()
+    ax2.bar(x_axis, y_axis_two, color='red', alpha=0.3)
+    plt.tight_layout()
 
 # save figure as pdf
-plt.savefig('speaking_bar.pdf')
 
+    plt.savefig(file_name)
+
+class_bar(ax, pd1["Name"], pd1["Writing Speed (Two Minutes)"], pd2["Writing Speed (Two Minutes)"], "Name of student", "Words written in two minutes", "Writing speed test", "writing_bar.pdf")
