@@ -20,20 +20,8 @@ pd2 = semester_one_end.drop(semester_one_end.index[-1])
 fig, ax = plt.subplots()
 
 # a function that takes the axes, the data to plot on the x-axis, the
-# data to plot on the y-axis, the x-axis title, the y-axis table, the color
-# of the bars, and the title of the graph
-
-# def make_bar(axes, x, y, xlabel, ylabel, color, title):
-#     ax.bar(x, y, color=color)
-#     plt.xticks(rotation=45)
-#     plt.xlabel(xlabel)
-#     plt.ylabel(ylabel)
-#     plt.ylim(0, (max(y)+2))
-#     plt.title(label=title)
-#
-# # call make_bar function with student name on x-axis, score for writing text
-# # on y-axis
-# make_bar(ax, pd1["Name"], pd1["Writing Speed (Two Minutes)"], "Name of student", "Words written in two minutes", "purple", "Writing speed test")
+# data to plot on the y-axis, the x-axis title, the y-axis title, the title of the graph,
+# and the name of the file you want created
 
 def class_bar(ax, x_axis, y_axis_one, y_axis_two, xlabel, ylabel, title, file_name):
     ax.bar(x_axis, y_axis_one, color='blue')
@@ -55,4 +43,10 @@ def class_bar(ax, x_axis, y_axis_one, y_axis_two, xlabel, ylabel, title, file_na
 
     plt.savefig(file_name)
 
-class_bar(ax, pd1["Name"], pd1["Writing Speed (Two Minutes)"], pd2["Writing Speed (Two Minutes)"], "Name of student", "Words written in two minutes", "Writing speed test", "writing_bar.pdf")
+# delete hashtag on lines below to generate pdf of each figure
+
+# class_bar(ax, pd1["Name"], pd1["Writing Speed (Two Minutes)"], pd2["Writing Speed (Two Minutes)"], "Name of student", "Words written in two minutes", "Writing speed test", "writing_bar.pdf")
+# class_bar(ax, pd1["Name"], pd1["Transcription"], pd2["Transcription"], "Name of student", "Words transcribed correctly", "Transcription test", "transcription_bar.pdf")
+# class_bar(ax, pd1["Name"], pd1["Speaking"], pd2["Speaking"], "Name of student", "Questions answered with correct grammar", "Speaking test", "speaking_bar.pdf")
+# class_bar(ax, pd1["Name"], pd1["Sight Words"], pd2["Sight Words"], "Name of student", "Sight words read correctly", "Sight words test", "sight_words_bar.pdf")
+# class_bar(ax, pd1["Name"], pd1["Reading"], pd2["Reading"], "Name of student", "Words read correctly", "Reading test", "reading_bar.pdf")
