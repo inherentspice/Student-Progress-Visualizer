@@ -38,10 +38,11 @@ def class_bar(ax, x_axis, y_axis_one, y_axis_two, xlabel, ylabel, title, file_na
     ax2 = ax.twinx()
     ax2.bar(x_axis, y_axis_two, color='red', alpha=0.3)
     plt.tight_layout()
-
-# save figure as pdf
-
+    # save figure as pdf
     plt.savefig(file_name)
+
+
+
 
 # delete hashtag on lines below to generate pdf of each figure
 
