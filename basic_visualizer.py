@@ -44,6 +44,7 @@ def class_bar(ax, x_axis, y_axis_one, y_axis_two, xlabel, ylabel, title, file_na
 
 
 
+
 # delete hashtag on lines below to generate pdf of each figure
 
 # class_bar(ax, pd1["Name"], pd1["Writing Speed (Two Minutes)"], pd2["Writing Speed (Two Minutes)"], "Name of student", "Words written in two minutes", "Writing speed test", "writing_bar.pdf")
