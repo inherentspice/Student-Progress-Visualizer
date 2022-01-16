@@ -17,18 +17,24 @@ pd2 = semester_one_end.drop(semester_one_end.index[-1])
 # merge the two dataframes so they can be visualized easily
 merged = pd1.merge(pd2, on="Name", how="outer", suffixes=("_begin", "_end"))
 
-# use .columns to check the suffix names are correct
-print(merged.columns)
+#initialize the matplotlib figure
+f, ax = plt.subplots(figsize=(6, 15))
 
-# create dataframes seperated into categories
-trans = merged[["Transcription_begin", "Transcription_end"]].copy()
-writing = merged[["Writing Speed (Two Minutes)_begin", "Writing Speed (Two Minutes)_end"]].copy()
-reading = merged[["Reading_begin", "Reading_end"]].copy()
-sight = merged[["Sight Words_begin", "Sight Words_end"]].copy()
-speak = merged[["Speaking_begin", "Speaking_end"]].copy()
+# set color palette
+sns.set_color_codes("pastel")
 
-#test visualization
-g = speak.plot.bar()
-g.set(xlabel="Student Results", ylabel="Speaking score out of 30")
+# plot the end of semester one results first
+sns.barplot(x=merged.index, y="Transcription_end", data=merged,
+            label="January, 2022", color="b")
+
+# set color of September plot
+sns.set_color_codes("muted")
+
+# plot the beginning of semester one results
+sns.barplot(x=merged.index, y="Transcription_begin", data=merged,
+            label="September, 2021", color="b")
+
+# rotate xticks so they are readable
 plt.xticks(rotation=90)
+
 plt.show()
