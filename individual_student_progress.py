@@ -28,5 +28,7 @@ sight = merged[["Sight Words_begin", "Sight Words_end"]].copy()
 speak = merged[["Speaking_begin", "Speaking_end"]].copy()
 
 #test visualization
-speak.plot.bar()
+g = speak.plot.bar()
+g.set(xlabel="Student Results", ylabel="Speaking score out of 30")
+plt.xticks(rotation=90)
 plt.show()
