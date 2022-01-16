@@ -37,4 +37,11 @@ sns.barplot(x=merged.index, y="Transcription_begin", data=merged,
 # rotate xticks so they are readable
 plt.xticks(rotation=90)
 
+# add a legend
+ax.legend(ncol=2, loc="upper right", frameon=True)
+
+# set the limits of the y-axis, and label the axis
+ax.set(ylim=(0, 22), ylabel="Transcription score",
+       xlabel="Students")
+
 plt.show()
