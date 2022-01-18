@@ -18,7 +18,7 @@ pd2 = semester_one_end.drop(semester_one_end.index[-1])
 merged = pd1.merge(pd2, on="Name", how="outer", suffixes=("_begin", "_end"))
 
 #initialize the matplotlib figure
-f, ax = plt.subplots(figsize=(6, 15))
+f, ax = plt.subplots(figsize=(16, 12))
 
 # set color palette
 sns.set_color_codes("deep")
@@ -35,13 +35,18 @@ sns.barplot(x=merged.index, y="Transcription_begin", data=merged,
             label="September, 2021", color="r")
 
 # rotate xticks so they are readable
-plt.xticks(rotation=90)
+
+for label in ax.xaxis.get_ticklabels():
+    label.set_visible(False)
 
 # add a legend
-ax.legend(ncol=2, loc="upper right", frameon=True)
+ax.legend(ncol=2, loc="upper right", frameon=True, fontsize=20)
 
 # set the limits of the y-axis, and label the axis
-ax.set(ylim=(0, 22), ylabel="Transcription score",
-       xlabel="Students")
+ax.set(ylim=(0, 20))
 
-plt.show()
+plt.ylabel("Words transcribed correctly", fontsize=28)
+plt.xlabel("")
+plt.title("Transcription test", fontsize=40)
+# save figure as pdf
+plt.savefig("transcription_bar.pdf")
