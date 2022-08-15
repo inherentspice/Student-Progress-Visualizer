@@ -1,0 +1,9 @@
+*.egg-info
+.coverage
+.ipynb_checkpoints
+**/__pycache__/
+.env
+*.ipynb
+*.vscode
+.python-version
+*.pyc
