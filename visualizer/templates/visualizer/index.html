@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+
+  {% if class_list %}
+    <ul>
+      {% for class in class_list %}
+        <li><a href="{% url 'visualizer:class class.id %'}">{{ class.class_name }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No classes have been created</p>
+  {% endif %}
+
+</html>
