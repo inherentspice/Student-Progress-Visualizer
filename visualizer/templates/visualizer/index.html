@@ -3,8 +3,8 @@
 
   {% if class_list %}
     <ul>
-      {% for class in class_list %}
-        <li><a href="{% url 'visualizer:class class.id %'}">{{ class.class_name }}</a></li>
+      {% for classroom in classroom_list %}
+        <li><a href="{% url 'visualizer:class class.id %'}">{{ classroom.classroom_name }}</a></li>
       {% endfor %}
     </ul>
   {% else %}

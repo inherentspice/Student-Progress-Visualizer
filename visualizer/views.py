@@ -1,33 +1,33 @@
 from http.client import HTTPResponse
 from django.shortcuts import render, get_list_or_404, redirect
 from django.http import HttpResponse
-from .models import Class, Student
-from .forms import ClassInformationForm
+from .models import Classroom, Student
+from .forms import ClassroomInformationForm
 
 def index(request):
-    class_list = Class.objects.order_by('grade')
+    classroom_list = Classroom.objects.order_by('grade')
     context = {
-        'class_list': class_list
+        'classroom_list': classroom_list
     }
     return render(request, 'visualizer/index.html', context)
 
-def class_registration(request):
+def classroom_registration(request):
     if request.method == 'POST':
-        form = ClassInformationForm(request.POST)
+        form = ClassroomInformationForm(request.POST)
 
         if form.is_valid():
             return redirect('classroom-created')
     else:
-        form = ClassInformationForm()
+        form = ClassroomInformationForm()
 
-    return render(request, 'visualizer/class_registration.html', {'form': form})
+    return render(request, 'visualizer/classroom_registration.html', {'form': form})
 
 def classroom_created(request):
     return render(request, 'visualizer/classroom_created.html')
 
-def class_overview(request, class_id):
+def classroom_overview(request, class_id):
     students = get_list_or_404(Student, pk=class_id)
-    return render(request, 'visualizer/class_overview.html', {'students': students})
+    return render(request, 'visualizer/classroom_overview.html', {'students': students})
 
 def grades(request, class_name):
     response = 'You\'re looking at the grades for class %s'

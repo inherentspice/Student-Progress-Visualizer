@@ -2,8 +2,8 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
-class Class(models.Model):
-    class_name = models.CharField(max_length=200)
+class Classroom(models.Model):
+    classroom_name = models.CharField(max_length=200)
     grade = models.CharField(max_length=40)
 
     def __str__(self):
@@ -11,7 +11,7 @@ class Class(models.Model):
 
 class Student(models.Model):
     student_name = models.CharField(max_length=200)
-    student_class = models.ForeignKey(Class, on_delete=models.CASCADE)
+    student_classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.student_name
