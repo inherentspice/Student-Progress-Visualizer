@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Register Classroom</title>
+  </head>
+
+  <body>
+    <h1>Create a Classroom</h1>
+    <form action="" method="post" novalidate>
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
