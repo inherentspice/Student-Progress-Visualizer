@@ -5,9 +5,10 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Classroom(models.Model):
     classroom_name = models.CharField(max_length=200)
     grade = models.CharField(max_length=40)
+    teachers = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.class_name + '(' + self.grade + ')'
+        return self.classroom_name + '(' + self.grade + ')'
 
 class Student(models.Model):
     student_name = models.CharField(max_length=200)

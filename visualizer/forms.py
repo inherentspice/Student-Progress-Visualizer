@@ -1,5 +1,7 @@
 from django import forms
+from visualizer.models import Classroom
 
-class ClassroomInformationForm(forms.Form):
-    classroom_name = forms.CharField(max_length=200)
-    grade = forms.CharField(max_length=40)
+class ClassroomInformationForm(forms.ModelForm):
+    class Meta:
+        model = Classroom
+        fields = '__all__'

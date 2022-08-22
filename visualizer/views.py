@@ -16,6 +16,7 @@ def classroom_registration(request):
         form = ClassroomInformationForm(request.POST)
 
         if form.is_valid():
+            classroom = form.save()
             return redirect('classroom-created')
     else:
         form = ClassroomInformationForm()
@@ -25,8 +26,8 @@ def classroom_registration(request):
 def classroom_created(request):
     return render(request, 'visualizer/classroom_created.html')
 
-def classroom_overview(request, class_id):
-    students = get_list_or_404(Student, pk=class_id)
+def classroom_overview(request, classroom_id):
+    students = get_list_or_404(Student, pk=classroom_id)
     return render(request, 'visualizer/classroom_overview.html', {'students': students})
 
 def grades(request, class_name):

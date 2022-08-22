@@ -9,7 +9,7 @@
     <h1>Create a Classroom</h1>
     <form action="" method="post" novalidate>
       {% csrf_token %}
-      {{ form }}
+      {{ form.as_p }}
       <input type="submit" value="Submit">
     </form>
   </body>

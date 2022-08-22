@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 
-  {% if class_list %}
+  {% if classroom_list %}
     <ul>
       {% for classroom in classroom_list %}
-        <li><a href="{% url 'visualizer:class class.id %'}">{{ classroom.classroom_name }}</a></li>
+        <li><a href="{% url 'visualizer:classroom' classroom.id%}">{{ classroom.grade}} {{ classroom.classroom_name }}</a></li>
       {% endfor %}
     </ul>
   {% else %}
