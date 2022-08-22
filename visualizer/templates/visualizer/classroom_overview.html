@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <h1>{{ students.student_class }}</h1>
-  <ul>
-    {% for student in student.student_name.all %}
-      <li>{{ student }}</li>
-    {% endfor %}
-  </ul>
+  {% if student_class %}
+    <h1>{{ students.student_class }}</h1>
+    <ul>
+      {% for student in student.student_name.all %}
+        <li>{{ student }}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p>No students have been entered into the class</p>
+    {% endif %}
 </html>

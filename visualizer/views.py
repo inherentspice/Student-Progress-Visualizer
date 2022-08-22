@@ -1,8 +1,8 @@
-from http.client import HTTPResponse
 from django.shortcuts import render, get_list_or_404, redirect
 from django.http import HttpResponse
 from .models import Classroom, Student
 from .forms import ClassroomInformationForm
+from django.urls import reverse
 
 def index(request):
     classroom_list = Classroom.objects.order_by('grade')
@@ -17,18 +17,19 @@ def classroom_registration(request):
 
         if form.is_valid():
             classroom = form.save()
-            return redirect('classroom-created')
+            return redirect(reverse('visualizer:classroom', args=(classroom.id,)))
     else:
         form = ClassroomInformationForm()
 
     return render(request, 'visualizer/classroom_registration.html', {'form': form})
 
-def classroom_created(request):
-    return render(request, 'visualizer/classroom_created.html')
 
 def classroom_overview(request, classroom_id):
-    students = get_list_or_404(Student, pk=classroom_id)
-    return render(request, 'visualizer/classroom_overview.html', {'students': students})
+    if request.method == 'POST':
+        pass
+    else:
+        pass
+    return render(request, 'visualizer/classroom_overview.html')
 
 def grades(request, class_name):
     response = 'You\'re looking at the grades for class %s'
