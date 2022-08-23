@@ -12,7 +12,7 @@ class Classroom(models.Model):
 
 class Student(models.Model):
     student_name = models.CharField(max_length=200)
-    student_classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
+    classroom_name = models.ForeignKey(Classroom, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.student_name

@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
+
+<body>
   {% if student_class %}
-    <h1>{{ students.student_class }}</h1>
+  <h1>Students in Classroom</h1>
     <ul>
-      {% for student in student.student_name.all %}
+      {% for student in student_class %}
         <li>{{ student }}</li>
       {% endfor %}
     </ul>
     {% else %}
       <p>No students have been entered into the class</p>
     {% endif %}
+
+    <h1>Add a Student to Your Classroom</h1>
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Submit">
+    </form>
+  </body>
 </html>
