@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_list_or_404
 from django.http import HttpResponse
 from .models import Classroom, Student
-from .forms import ClassroomInformationForm, StudentInformationForm
+from .forms import ClassroomInformationForm, StudentInformationForm, GradesInformationForm
 from django.urls import reverse
 
 def index(request):
@@ -30,18 +30,26 @@ def classroom_overview(request, classroom_id):
 
         if form.is_valid():
             student = form.save()
-            classroom = Classroom.objects.get(pk=classroom_id)
             student_class = get_list_or_404(Student, classroom_name = classroom_id)
             return render(request, 'visualizer/classroom_overview.html',
                           {'student_class': student_class, 'form': form})
     else:
         form = StudentInformationForm()
 
-    classroom = Classroom.objects.get(pk=classroom_id)
     student_class = get_list_or_404(Student, classroom_name=classroom_id)
     return render(request, 'visualizer/classroom_overview.html',
                   {'student_class': student_class, 'form': form})
 
-def grades(request, class_name):
-    response = 'You\'re looking at the grades for class %s'
-    return HttpResponse(response % class_name)
+def grades(request, classroom_id):
+    if request.method == 'POST':
+        form = GradesInformationForm(request.POST)
+
+        if form.is_valid():
+            grades = form.save()
+            return render(request, 'visualizer/student_performance.html',
+                          {'form': form})
+    else:
+        form = GradesInformationForm()
+
+    return render(request, 'visualizer/student_performance.html',
+                  {'form': form})
