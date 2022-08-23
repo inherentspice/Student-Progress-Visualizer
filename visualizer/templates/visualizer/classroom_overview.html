@@ -6,7 +6,7 @@
   <h1>Students in Classroom</h1>
     <ul>
       {% for student in student_class %}
-        <li>{{ student }}</li>
+        <li><a href="{% url 'visualizer:grades' student.id %}">{{ student }}</a></li>
       {% endfor %}
     </ul>
     {% else %}
