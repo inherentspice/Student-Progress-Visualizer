@@ -23,6 +23,21 @@ def classroom_registration(request):
 
     return render(request, 'visualizer/classroom_registration.html', {'form': form})
 
+def classroom_update(request, classroom_id):
+    classroom = Classroom.objects.get(id=classroom_id)
+
+    if request.method == 'POST':
+        form = ClassroomInformationForm(request.POST, instance=classroom)
+        if form.is_valid():
+            form.save()
+            return redirect('visualizer:classroom', classroom.id)
+
+    else:
+        form = ClassroomInformationForm(instance=classroom)
+
+    return render(request, 'visualizer/classroom_update.html',
+                  {'form': form})
+
 
 def classroom_overview(request, classroom_id):
     if request.method == 'POST':
