@@ -4,7 +4,8 @@
   {% if classroom_list %}
     <ul>
       {% for classroom in classroom_list %}
-        <li><a href="{% url 'visualizer:classroom' classroom.id%}">{{ classroom.grade}} {{ classroom.classroom_name }}</a></li>
+        <li><a href="{% url 'visualizer:classroom' classroom.id%}">{{ classroom.grade}} {{ classroom.classroom_name }}</a>
+           - <a href="{% url 'visualizer:classroom-update' classroom.id %}">[edit]</a></li>
       {% endfor %}
     </ul>
   {% else %}
