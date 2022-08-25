@@ -45,13 +45,18 @@ def classroom_overview(request, classroom_id):
 
         if form.is_valid():
             student = form.save()
-            student_class = get_list_or_404(Student, classroom_name = classroom_id)
+            student_class = Student.objects.all(classroom_id=classroom_id)
             return render(request, 'visualizer/classroom_overview.html',
                           {'student_class': student_class, 'form': form})
     else:
         form = StudentInformationForm()
 
-    student_class = get_list_or_404(Student, classroom_name=classroom_id)
+        try:
+            student_class = Student.objects.all(classroom_id=classroom_id)
+        except:
+            return render(request, 'visualizer/classroom_overview.html',
+                          {'form': form})
+
     return render(request, 'visualizer/classroom_overview.html',
                   {'student_class': student_class, 'form': form})
 
