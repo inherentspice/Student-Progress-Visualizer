@@ -18,7 +18,8 @@ class Student(models.Model):
         return self.student_name
 
 class Grades(models.Model):
-    student_name = models.ForeignKey(Student, on_delete=models.CASCADE)
+    student_name = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='student_grades')
+    classroom_name = models.ForeignKey(Classroom, on_delete=models.CASCADE, related_name='classroom_grades')
 
     class Subjects(models.TextChoices):
         sight_words = "Sight Words"
@@ -32,4 +33,5 @@ class Grades(models.Model):
         choices=Subjects.choices,
         default=Subjects.reading,
         )
+
     grades = models.PositiveIntegerField(default=50, validators=[MinValueValidator(0), MaxValueValidator(100)])

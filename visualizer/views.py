@@ -45,29 +45,30 @@ def classroom_overview(request, classroom_id):
 
         if form.is_valid():
             student = form.save()
-            student_class = Student.objects.all(classroom_id=classroom_id)
+            student_class = Student.objects.filter(classroom_name=classroom_id)
             return render(request, 'visualizer/classroom_overview.html',
                           {'student_class': student_class, 'form': form})
     else:
         form = StudentInformationForm()
 
         try:
-            student_class = Student.objects.all(classroom_id=classroom_id)
-        except:
+            student_class = Student.objects.filter(classroom_name=classroom_id)
+
+        except Student.DoesNotExist:
             return render(request, 'visualizer/classroom_overview.html',
                           {'form': form})
 
     return render(request, 'visualizer/classroom_overview.html',
                   {'student_class': student_class, 'form': form})
 
-def grades(request, classroom_id):
+def grades(request, classroom_id, student_id):
     if request.method == 'POST':
+
         form = GradesInformationForm(request.POST)
 
         if form.is_valid():
             grades = form.save()
-            return render(request, 'visualizer/student_performance.html',
-                          {'form': form})
+            return redirect('visualizer:classroom', classroom_id)
     else:
         form = GradesInformationForm()
 
