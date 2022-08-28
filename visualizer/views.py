@@ -38,10 +38,25 @@ def classroom_update(request, classroom_id):
     return render(request, 'visualizer/classroom_update.html',
                   {'form': form})
 
+def student_update(request, classroom_id, student_id):
+    student = Student.objects.get(id=student_id)
+
+    if request.method == 'POST':
+        form = StudentInformationForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect('visualizer:classroom', classroom_id)
+
+    else:
+        form = StudentInformationForm(instance=student)
+
+    return render(request, 'visualizer/student_update.html',
+                  {'form': form})
+
 
 def classroom_overview(request, classroom_id):
     if request.method == 'POST':
-        form = StudentInformationForm(request.POST)
+        form = StudentInformationForm(request.POST, )
 
         if form.is_valid():
             student = form.save()
