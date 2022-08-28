@@ -34,4 +34,6 @@ class Grades(models.Model):
         default=Subjects.reading,
         )
 
+    date = models.DateField()
+
     grades = models.PositiveIntegerField(default=50, validators=[MinValueValidator(0), MaxValueValidator(100)])

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_list_or_404
 from django.http import HttpResponse
-from .models import Classroom, Student
+from .models import Classroom, Student, Grades
 from .forms import ClassroomInformationForm, StudentInformationForm, GradesInformationForm
 from django.urls import reverse
 
@@ -77,6 +77,7 @@ def classroom_overview(request, classroom_id):
                   {'student_class': student_class, 'form': form})
 
 def grades(request, classroom_id, student_id):
+    grades = Grades.objects.filter(student_name=student_id)
     if request.method == 'POST':
 
         form = GradesInformationForm(request.POST)
@@ -88,4 +89,4 @@ def grades(request, classroom_id, student_id):
         form = GradesInformationForm()
 
     return render(request, 'visualizer/student_performance.html',
-                  {'form': form})
+                  {'grades': grades, 'form': form})

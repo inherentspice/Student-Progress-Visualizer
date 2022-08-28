@@ -2,6 +2,16 @@
 
 <html>
   <body>
+    {% if grades %}
+      <h1> Student Grades</h1>
+    <ul>
+      {% for grade in grades %}
+        <li>{{ grade.subject }} {{ grade.grades }} - [{{ grade.date }}]</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p>Student does not yet have any grades</p>
+    {% endif %}
     <h1>Record Grades for your Student!</h1>
     <form action="" method="post">
       {% csrf_token %}
