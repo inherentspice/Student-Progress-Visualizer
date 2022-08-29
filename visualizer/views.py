@@ -76,6 +76,15 @@ def classroom_overview(request, classroom_id):
     return render(request, 'visualizer/classroom_overview.html',
                   {'student_class': student_class, 'form': form})
 
+def classroom_delete(request, classroom_id):
+    classroom = Classroom.objects.get(id=classroom_id)
+    if request.method == 'POST':
+        classroom.delete()
+        return redirect('visualizer:index')
+
+    return render(request, 'visualizer/classroom_delete.html',
+                  {'classroom': classroom})
+
 def grades(request, classroom_id, student_id):
     grades = Grades.objects.filter(student_name=student_id)
     if request.method == 'POST':
