@@ -1,7 +1,16 @@
-<h1>Update Classroom</h1>
+<!DOCTYPE html>
+<html>
 
-<form action="" method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
+  <h1>Update Classroom</h1>
+
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
   <input type="submit" value="Submit">
-</form>
+  </form>
+  <ul>
+    <li>
+      <a href="{% url 'visualizer:classroom-delete' classroom.id %}">[delete classroom]</a>
+    </li>
+  </ul>
+</html>

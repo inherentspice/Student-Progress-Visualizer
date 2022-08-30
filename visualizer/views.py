@@ -36,7 +36,7 @@ def classroom_update(request, classroom_id):
         form = ClassroomInformationForm(instance=classroom)
 
     return render(request, 'visualizer/classroom_update.html',
-                  {'form': form})
+                  {'classroom': classroom, 'form': form})
 
 def student_update(request, classroom_id, student_id):
     student = Student.objects.get(id=student_id)
@@ -84,6 +84,16 @@ def classroom_delete(request, classroom_id):
 
     return render(request, 'visualizer/classroom_delete.html',
                   {'classroom': classroom})
+
+def student_delete(request, classroom_id, student_id):
+    student = Student.objects.get(id=student_id)
+
+    if request.method == 'POST':
+        student.delete()
+        return redirect('visualizer:classroom', classroom_id)
+
+    return render(request, 'visualizer/student_delete.html',
+                  {'student': student})
 
 def grades(request, classroom_id, student_id):
     grades = Grades.objects.filter(student_name=student_id)
