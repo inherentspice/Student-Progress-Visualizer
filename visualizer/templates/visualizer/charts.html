@@ -1,0 +1,50 @@
+{% block content %}
+  <div id="container" style="width: 75%;">
+    <canvas id="grades-chart" data-url="{% url 'visualizer:grades-chart' student.id%}"></canvas>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+
+    $(function () {
+
+      var $gradesChart = $("#grades-chart");
+
+      $.ajax({
+        url: $gradesChart.data("url"),
+        success: function (data) {
+
+          var ctx = $gradesChart[0].getContext("2d");
+
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: data.labels,
+              datasets: [{
+                label: 'Grades',
+                backgroundColor: 'blue',
+                data: data.data
+              }]
+            },
+            options: {
+              responsive: true,
+              legend: {
+                position: 'top',
+              },
+              title: {
+                display: true,
+                text: 'Grades Bar Chart'
+              }
+            }
+          });
+          console.log(data)
+
+        }
+      });
+
+    });
+
+  </script>
+
+{% endblock %}

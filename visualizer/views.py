@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_list_or_404
-from django.http import HttpResponse
+from django.http import JsonResponse
 from .models import Classroom, Student, Grades
 from .forms import ClassroomInformationForm, StudentInformationForm, GradesInformationForm
 from django.urls import reverse
@@ -109,3 +109,23 @@ def grades(request, classroom_id, student_id):
 
     return render(request, 'visualizer/student_performance.html',
                   {'grades': grades, 'form': form})
+
+
+def charts(request, classroom_id, student_id):
+    student = Student.objects.get(pk=student_id)
+    return render(request, 'visualizer/charts.html', {'student': student})
+
+
+def grades_chart(request, student_id):
+    labels = []
+    data = []
+
+    queryset = Grades.objects.filter(student_name=student_id)
+    for subject in queryset:
+        labels.append(subject.subject)
+        data.append(subject.grades)
+
+    return JsonResponse(data={
+        'labels': labels,
+        'data': data,
+    })
