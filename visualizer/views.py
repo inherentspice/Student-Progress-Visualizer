@@ -4,6 +4,9 @@ from .models import Classroom, Student, Grades
 from .forms import ClassroomInformationForm, StudentInformationForm, GradesInformationForm
 from django.urls import reverse
 
+def home_view(request, *args, **kwargs):
+    return render(request, 'visualizer/home.html')
+
 def index(request):
     classroom_list = Classroom.objects.order_by('grade')
     context = {
