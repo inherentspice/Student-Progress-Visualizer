@@ -1,10 +1,53 @@
+html {
+  height: 100vh;
+  margin: 0;
+}
+
 body {
   display: flex;
-  width: 200;
-  height: 200;
-  background-color: navy;
+  background-color: rgb(80, 80, 245);
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.banner {
+  display: flex;
+  background-color: rgb(245, 243, 239);
+  border: 10px solid rgb(226, 40, 77);
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 1em;
+  justify-content: center;
+}
+
+.info {
+  margin-top: 100px;
+  display: flex;
+}
+
+.links {
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.link {
+  border: 10px solid rgb(226, 40, 77);
+  background-color: rgb(245, 243, 239);
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  border-radius: 10%;
 }
 
 h1 {
-  font-size: 200px;
+  font-size: 5rem;
+  color: rgb(226, 40, 77);
+  font-weight: 700;
+}
+
+p {
+  font-size: 4rem;
+  color: rgb(226, 40, 77, .8);
 }
