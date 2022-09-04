@@ -1,0 +1,10 @@
+body {
+  display: flex;
+  width: 200;
+  height: 200;
+  background-color: navy;
+}
+
+h1 {
+  font-size: 200px;
+}
