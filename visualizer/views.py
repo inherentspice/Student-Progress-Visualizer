@@ -106,7 +106,7 @@ def grades(request, classroom_id, student_id):
 
         if form.is_valid():
             grades = form.save()
-            return redirect('visualizer:classroom', classroom_id)
+            return redirect('visualizer:grades', classroom_id, student_id)
     else:
         form = GradesInformationForm()
 
