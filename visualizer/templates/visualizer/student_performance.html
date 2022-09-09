@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 
 <html>
@@ -7,8 +8,10 @@
     <ul>
       {% for grade in grades %}
         <li>{{ grade.subject }} {{ grade.grades }} - [{{ grade.date }}]</li>
-      {% endfor %}
+        {% endfor %}
     </ul>
+    <a href="{% url 'visualizer:charts' classroom student %}">Chart it!</a>
+
     {% else %}
       <p>Student does not yet have any grades</p>
     {% endif %}
@@ -17,5 +20,8 @@
       {% csrf_token %}
       {{ form.as_p }}
       <input type="submit" value="Submit">
-    </form>  </body>
+    </form>
+  </body>
+
+
 </html>

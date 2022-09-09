@@ -111,7 +111,7 @@ def grades(request, classroom_id, student_id):
         form = GradesInformationForm()
 
     return render(request, 'visualizer/student_performance.html',
-                  {'grades': grades, 'form': form})
+                  {'grades': grades, 'form': form, 'classroom': classroom_id, 'student': student_id})
 
 
 def charts(request, classroom_id, student_id):
