@@ -1,3 +1,11 @@
+:root {
+  --primary-color: rgb(80, 80, 245);
+  --secondary-color: rgb(226, 40, 77);
+  --color-white: rgb(245, 243, 239);
+  list-style: none;
+  text-decoration: none;
+}
+
 html {
   height: 100vh;
   margin: 0;
@@ -5,7 +13,7 @@ html {
 
 body {
   display: flex;
-  background-color: rgb(80, 80, 245);
+  background-color: var(--primary-color);
   flex-direction: column;
   margin: 0;
   padding: 0;
@@ -20,8 +28,8 @@ body {
 
 .banner {
   display: flex;
-  background-color: rgb(245, 243, 239);
-  border: 10px solid rgb(226, 40, 77);
+  background-color: var(--color-white);
+  border: 10px solid var(--secondary-color);
   margin-left: 0;
   margin-right: 0;
   margin-bottom: 1em;
@@ -40,8 +48,8 @@ body {
   align-items: center;
 }
 .link {
-  border: 10px solid rgb(226, 40, 77);
-  background-color: rgb(245, 243, 239);
+  border: 10px solid var(--secondary-color);
+  background-color: var(--color-white);
   width: 200px;
   display: flex;
   justify-content: center;
@@ -50,13 +58,14 @@ body {
 
 h1 {
   font-size: 5rem;
-  color: rgb(226, 40, 77);
+  color: var(--primary-color);
   font-weight: 700;
 }
 
 p {
-  font-size: 4rem;
-  color: rgb(226, 40, 77, .8);
+  font-size: 2rem;
+  color: var(--primary-color);
+  text-align: center;
 }
 
 .footer {
@@ -64,8 +73,8 @@ p {
   margin-bottom: 0;
   padding-bottom: 0;
   justify-content: space-between;
-  background-color: rgb(245, 243, 239);
-  border-top:5px solid rgb(226, 40, 77);
+  background-color: var(--color-white);
+  border-top:5px solid var(--secondary-color);
 }
 
 .left {
@@ -95,5 +104,11 @@ p {
 }
 .footer-p {
   font-size: 1.5rem;
-  color: rgb(226, 40, 77);
+  color: var(--primary-color)
+}
+
+a, a:hover, a:visited, a:link, a:active, a:-webkit-any-link{
+  text-decoration: none;
+  color: var(--primary-color);
+  text-align: center;
 }
