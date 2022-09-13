@@ -3,7 +3,7 @@
   --secondary-color: rgb(226, 40, 77);
   --color-white: rgb(245, 243, 239);
   list-style: none;
-  text-decoration: none;
+  font-family: 'Bitter', 'Tahoma', 'sans-serif';
 }
 
 html {
@@ -111,4 +111,5 @@ a, a:hover, a:visited, a:link, a:active, a:-webkit-any-link{
   text-decoration: none;
   color: var(--primary-color);
   text-align: center;
+  font-weight: 500;
 }
