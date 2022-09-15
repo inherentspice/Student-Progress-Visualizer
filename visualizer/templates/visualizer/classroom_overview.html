@@ -1,9 +1,18 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
-
-<body>
-  {% if student_class %}
-  <h1>Students in Classroom</h1>
+  <head>
+    <meta charset="utf-8">
+    <title>Classroom Overview</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet.css' %}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    {% if student_class %}
+    <h1>Students in Classroom</h1>
     <ul>
       {% for student in student_class %}
         <li><a href="{% url 'visualizer:grades' student.classroom_name.id student.id%}">{{ student }}</a>
